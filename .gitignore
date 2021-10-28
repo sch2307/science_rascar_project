@@ -1,4 +1,5 @@
 .idea/*
+./venv
 config
 .DS_Store
 */__pycache__

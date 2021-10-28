@@ -1,8 +1,8 @@
 #########################################################################
 # Date: 2018/10/02
-# file name: 3rd_assignment_main.py
-# Purpose: this code has been generated for the 4 wheel drive body
-# moving object to perform the project with line detector
+# file name: assignment_main.py
+# Purpose: this code has been generated for the 4 wheels drive body
+# moving object to perform the project with ultra sensor
 # this code is used for the student only
 #########################################################################
 
@@ -19,11 +19,11 @@ class myCar(object):
         self.car.drive_parking()
 
     # =======================================================================
-    # 3RD_ASSIGNMENT_CODE
-    # Complete the code to perform Third Assignment
+    # 1ST_ASSIGNMENT_CODE
+    # Complete the code to perform First Assignment
     # =======================================================================
     def car_startup(self):
-        # implement the assignment code here
+        # Implement the assignment code here.
         pass
 
 

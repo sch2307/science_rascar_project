@@ -1,4 +1,4 @@
-from L298N import L298N
+from TB6612 import TB6612
 from PCA9685 import PCA9685
 import filedb
 
@@ -7,10 +7,8 @@ class Rear_Wheels(object):
     """ Back wheels control class """
 
     """ Initialize motor pin """
-    Motor_IN1 = 11
-    Motor_IN2 = 12
-    Motor_IN3 = 13
-    Motor_IN4 = 15
+    Motor_A = 17
+    Motor_B = 27
 
     PWM_A = 4 # servo driver IC CH4
     PWM_B = 5 # servo driver IC CH5
@@ -26,18 +24,18 @@ class Rear_Wheels(object):
         self.forward_A = int(self.db.get("forward_A", default_value=1))
         self.forward_B = int(self.db.get("forward_B", default_value=0))
 
-        self.left_wheel = L298N.Motor(self.Motor_IN1, self.Motor_IN2, offset=self.forward_A, is_left=True)
-        self.right_wheel = L298N.Motor(self.Motor_IN3, self.Motor_IN4, offset=self.forward_B, is_left=False)
+        self.left_wheel = TB6612.Motor(self.Motor_A, offset=self.forward_A)
+        self.right_wheel = TB6612.Motor(self.Motor_B, offset=self.forward_B)
 
         # PWM Setup
         self.pwm = PCA9685.PWM(bus_number=bus_number)
 
         def _set_a_pwm(value):
-            pulse_wide = self.pwm.map(value, 0, 100, 0, 4095)
+            pulse_wide = int(self.pwm.map(value, 0, 100, 0, 4095))
             self.pwm.write(self.PWM_A, 0, int(pulse_wide))
 
         def _set_b_pwm(value):
-            pulse_wide = self.pwm.map(value, 0, 100, 0, 4095)
+            pulse_wide = int(self.pwm.map(value, 0, 100, 0, 4095))
             self.pwm.write(self.PWM_B, 0, int(pulse_wide))
 
         self.left_wheel.pwm  = _set_a_pwm
@@ -47,8 +45,8 @@ class Rear_Wheels(object):
 
         self.debug = int(self.db.get("debug", default_value=0))
         if self._DEBUG:
-            print(self._DEBUG_INFO, 'Set left wheel to IN1 #%d, IN2 #%d PWM channel to %d' % (self.Motor_IN1, self.Motor_IN2, self.PWM_A))
-            print(self._DEBUG_INFO, 'Set right wheel to IN3 #%d, IN4 #%d PWM channel to %d' % (self.Motor_IN3, self.Motor_IN3, self.PWM_B))
+            print(self._DEBUG_INFO, 'Set left wheel to #%d, PWM channel to %d' % (self.Motor_A, self.PWM_A))
+            print(self._DEBUG_INFO, 'Set right wheel to #%d, PWM channel to %d' % (self.Motor_B, self.PWM_B))
 
     def stop(self):
         """ Stop both wheels """
