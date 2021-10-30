@@ -16,8 +16,8 @@ if __name__ == '__main__':
         steering.turn_left() #왼쪽 조향
         steering.turn_right() #오른쪽 조향
 
-        steering.turn(-15) #왼쪽 조향 / 앵글값(최대 조향각 35도)
-        steering.turn(15) #오른쪽 조향 / 앵글값(최대 조향각 35도)
+        # steering.turn(-15) #왼쪽 조향 / 앵글값(최대 조향각 35도)
+        # steering.turn(15) #오른쪽 조향 / 앵글값(최대 조향각 35도)
 
         # Example Of Real Motor Control
         accelerator = rear_wheels.Rear_Wheels(db='config')
