@@ -4,13 +4,13 @@ import RPi.GPIO as GPIO
 
 
 class Supersonic_Sensor(object):
-    timeout = 0.1
+    timeout = 0.05
 
     def __init__(self, channel):
         self.channel = channel
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BCM)
 
-    def get_distance(self):
+    def distance(self):
         pulse_end = 0
         pulse_start = 0
         GPIO.setup(self.channel, GPIO.OUT)
@@ -30,18 +30,20 @@ class Supersonic_Sensor(object):
             pulse_end = time.time()
             if pulse_start - timeout_start > self.timeout:
                 return -1
-
         if pulse_start != 0 and pulse_end != 0:
             pulse_duration = pulse_end - pulse_start
             distance = pulse_duration * 100 * 343.0 / 2
             distance = int(distance)
-            # print 'start = %s'%pulse_start,
-            # print 'end = %s'%pulse_end
             if distance >= 0:
                 return distance
             else:
                 return -1
         else:
-            # print 'start = %s'%pulse_start,
-            # print 'end = %s'%pulse_end
             return -1
+
+    def get_distance(self, mount=5):
+        sum = 0
+        for i in range(mount):
+            a = self.distance()
+            sum += a
+        return int(sum / mount)
