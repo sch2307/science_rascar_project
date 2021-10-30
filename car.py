@@ -54,7 +54,7 @@ class Car(object):
             # ================================================================
             # ULTRASONIC MODULE DRIVER INITIALIZE / TRIGGER=5, ECHO=6
             # ================================================================
-            self.distance_detector = Supersonic_Sensor.Supersonic_Sensor(20)
+            self.distance_detector = Supersonic_Sensor.Supersonic_Sensor(17)
 
             # ================================================================
             # TRACKING MODULE DRIVER INITIALIZE

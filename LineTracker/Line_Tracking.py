@@ -87,7 +87,6 @@ class Line_Tracker(object):
         time_during = 0
         while time_during < timeout:
             lt_status = self.read_digital()
-            result = 0
             if 1 in lt_status:
                 return lt_status
             time_now = time.time()

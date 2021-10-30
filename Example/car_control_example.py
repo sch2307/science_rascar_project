@@ -33,7 +33,7 @@ if __name__ == '__main__':
         accelerator.power_down()
         
         # Example of Ultrasonic Sensor
-        distance_detector = Supersonic_Sensor.Supersonic_Sensor(20)
+        distance_detector = Supersonic_Sensor.Supersonic_Sensor(17)
 
         for i in range(10):
             distance = distance_detector.get_distance()
