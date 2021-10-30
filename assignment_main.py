@@ -1,5 +1,5 @@
 #########################################################################
-# Date: 2018/10/02
+# Date: 2021/10/30
 # file name: assignment_main.py
 # Purpose: this code has been generated for the 4 wheels drive body
 # moving object to perform the project with ultra sensor
@@ -19,7 +19,7 @@ class myCar(object):
         self.car.drive_parking()
 
     # =======================================================================
-    # 1ST_ASSIGNMENT_CODE
+    # ASSIGNMENT_CODE
     # Complete the code to perform First Assignment
     # =======================================================================
     def car_startup(self):
