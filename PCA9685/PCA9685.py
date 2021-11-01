@@ -38,6 +38,9 @@ class PWM(object):
         if self._DEBUG:
             print(self._DEBUG_INFO, message)
 
+    def startup(self):
+        self.setup()
+
     def setup(self):
         '''Init the class with bus_number and address'''
         self._debug_('Reseting PCA9685 MODE1 (without SLEEP) and MODE2')

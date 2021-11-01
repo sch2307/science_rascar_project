@@ -20,7 +20,7 @@ class myCar(object):
 
     # =======================================================================
     # ASSIGNMENT_CODE
-    # Complete the code to perform First Assignment
+    # Complete the code to perform Assignment
     # =======================================================================
     def car_startup(self):
         # Implement the assignment code here.
